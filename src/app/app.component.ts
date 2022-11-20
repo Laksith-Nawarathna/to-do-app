@@ -7,4 +7,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 
+  toggleMode() : void{
+    let element = document.body;
+    element.classList.toggle("dark-mode");
+  }
+
+
+
 }
