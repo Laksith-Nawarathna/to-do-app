@@ -1,10 +1,38 @@
-
 <h1 class="text-center m-3">
   To Do App
 </h1>
-<div class="d-flex justify-content-end">
+<div class="d-flex justify-content-end mb-3">
   <button (click)="toggleMode(); " id="toggle-btn" type="button"
           class="btn btn-warning" data-bs-toggle="button">
     Toggle Mode
   </button>
 </div>
+
+<div class="d-flex justify-content-between">
+  <div class="mb-3 col-6">
+    <form action="#">
+      <h3 class="text-center m-3">To Do's</h3>
+      <label class="form-label">Enter new TO DO item</label>
+      <input type="text" class="form-control" placeholder="Eg. Finish Angular Project">
+      <button class="btn btn-primary mt-3 mb-3">+ Add New To Do</button>
+    </form>
+
+    <ul>
+      <li>to do 1</li>
+      <li>to do 2</li>
+      <li>to do 3</li>
+      <li>to do 4</li>
+      <li>to do 5</li>
+    </ul>
+  </div>
+
+  <div class="col-5">
+    <h3 class="text-center m-3">Completed</h3>
+    <ul>
+      <li>completed to do 1</li>
+      <li>completed to do 2</li>
+      <li>completed to do 3</li>
+    </ul>
+  </div>
+</div>
+
