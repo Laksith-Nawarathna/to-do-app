@@ -9,30 +9,59 @@
 </div>
 
 <div class="d-flex justify-content-between">
+
+  <!-- New to do items -->
+
   <div class="mb-3 col-6">
     <form action="#">
       <h3 class="text-center m-3">To Do's</h3>
       <label class="form-label">Enter new TO DO item</label>
-      <input type="text" class="form-control" placeholder="Eg. Finish Angular Project">
-      <button class="btn btn-primary mt-3 mb-3">+ Add New To Do</button>
+      <input #txt_input type="text" class="form-control" placeholder="Eg. Finish Angular Project">
+      <button class="btn btn-primary mt-3 mb-3" (click)="addItem(txt_input.value);
+txt_input.value=''; txt_input.focus()">+ Add New To Do
+      </button>
     </form>
 
-    <ul>
-      <li>to do 1</li>
-      <li>to do 2</li>
-      <li>to do 3</li>
-      <li>to do 4</li>
-      <li>to do 5</li>
-    </ul>
+    <div class="d-flex justify-content-between" *ngFor="let item of getItems()">
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" (input)="item.checked = true">
+        <label class="form-check-label">
+          {{item.description}}
+        </label>
+      </div>
+
+      <div (click)="removeItem(item)">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill"
+             viewBox="0 0 16 16">
+          <path
+            d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
+        </svg>
+      </div>
+    </div>
   </div>
+
+  <!-- Completed Tasks -->
 
   <div class="col-5">
     <h3 class="text-center m-3">Completed</h3>
-    <ul>
-      <li>completed to do 1</li>
-      <li>completed to do 2</li>
-      <li>completed to do 3</li>
-    </ul>
+    <div class="d-flex justify-content-between" *ngFor="let item of getItems(true)">
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" (input)="item.checked = false">
+        <label class="form-check-label">
+          {{item.description}}
+        </label>
+      </div>
+
+      <div (click)="removeItem(item)">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill"
+             viewBox="0 0 16 16">
+          <path
+            d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
+        </svg>
+      </div>
+    </div>
   </div>
+
 </div>
+
 
